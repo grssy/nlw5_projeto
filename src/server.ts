@@ -1,4 +1,6 @@
-import express from "express";
+import express from "express"; // express para executar os métodos http
+import "./database"; // importando o index do database
+import { routes } from "./routes";
 
 const app = express();
 
@@ -10,16 +12,9 @@ const app = express();
  * PATCH = Alterar uma informação específica
  */
 
-app.get("/", (request, response) => {
-  return response.json({
-    message: "Olá NLW 05"
-  });
-});
+app.use(express.json()); // Permite jSON como request 
 
-app.post("/", (resquest, response) => {
-  return response.json({
-    message: "Usuário salvo com sucesso!"
-  });
-});
+app.use(routes);
 
+// Definindo a porta do nosso servidor
 app.listen(3333, () => console.log("Server is running on port 3333"));
