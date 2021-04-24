@@ -39,6 +39,12 @@ class MessagesService {
     return list;
   }
 
+  async deleteMessage(id: string) {
+
+    await this.messageRepository.delete(id);
+
+  }
+
 }
 
 export { MessagesService };

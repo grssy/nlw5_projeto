@@ -28,6 +28,16 @@ class MessagesController {
 
     return response.json(list);
   }
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const messagesService = new MessagesService();
+
+    await messagesService.deleteMessage(id);
+
+    return response.status(200);
+  }
 }
 
 export { MessagesController };
